@@ -11,6 +11,15 @@
         <title>{% if title %} {{title}} {% else %} Blog {% endif %}</title>
     </head>
     <body>
+        <header>
+            {% if request.user.is_authenticated %}
+                <span> Hi, {{request.user.username | title }} </span>
+                <a href ="{% url 'logout' %}"> logout</a>
+            {% else %}
+                <a href ="{% url 'login' %}"> Login</a>
+                <a href ="{% url 'register' %}"> Register</a>
+            {% endif %}
+        </header>
         {% if messages %}
         <div class ="messages">
             {% for message in messages %}
