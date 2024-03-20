@@ -1,0 +1,13 @@
+<h1> Contacts </h1>
+{% for contact in contacts %}
+    <p> {{ contact.id }} </p>
+    <p>{{ contact.first_name }}</p>
+    <p>{{ contact.last_nmae }}</p>
+    <p>{{ contact.email }}</p>
+    <p>{{ contact.phone }}</p>
+    <p> <a href= "{% url 'fbv-detail-view' contact.id %}"> Details</a></p>
+    <p> <a href= "{% url 'cbv-detail-view' contact.id %}"> Details CBV</a></p>
+    <p> <a href= "{% url 'fbv-delete-view' contact.id %}"> Delete</a></p>
+    <p> <a href= "{% url 'cbv-delete-view' contact.id %}"> Delete CBV</a></p>
+    <p> ----------------------</p>
+{% endfor %}

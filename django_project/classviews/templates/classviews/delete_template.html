@@ -1,0 +1,6 @@
+Are you sure to delete {{ object.first_name }} ?
+<form method = "POST" nonvalidate>
+    {% csrf_token %}
+    <button type="submit"> yes, Delete </button>
+    <a href = "{% url 'fbv-list-view' %}"> Cancel </a>
+</form>
