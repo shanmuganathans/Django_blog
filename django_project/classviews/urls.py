@@ -14,4 +14,6 @@ urlpatterns = [
     path("cbv_detail_view/<int:pk>", views.CBVDetailView.as_view(), name= "cbv-detail-view"),
     path("fbv_delete_view/<int:pk>", views.fbv_delete_view, name ="fbv-delete-view"),
     path("cbv_delete_view/<int:pk>", views.CBVDeleteView.as_view(), name ="cbv-delete-view"),
+    path("fbv_update_view/<int:id>", views.fbv_update_view, name="fbv-update-view"),
+    path("cbv_update_view/<int:id>", views.CBVUpdateView.as_view(), name="cbv-update-view"),
 ]

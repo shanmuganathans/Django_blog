@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView, CreateView, DeleteView
+from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 
 
@@ -117,3 +117,28 @@ class CBVDeleteView(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponse("Deleted successfully..!")
+    
+def fbv_update_view(request, id):
+    obj = get_object_or_404(Contact, id=id)
+    if request.method == "GET":
+        context = {
+            "form":ContactForm(instance=obj)
+        }
+        return render(request, "classviews/form_update.html",context)
+    elif request.method == "POST":
+        form = ContactForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect("cbv-list-view")
+        else:
+            return render(request, "classviews/form_update.html",context)
+
+class CBVUpdateView(UpdateView):
+    template_name = "classviews/form_update.html"
+    form_class = ContactForm
+    pk_url_kwarg = "id"
+    model = Contact
+    
+    def form_valid(self, form):
+        form.save()
+        return redirect("cbv-list-view")
