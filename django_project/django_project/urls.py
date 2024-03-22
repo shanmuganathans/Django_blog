@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include('users.urls')),
     path("views/", include('classviews.urls')),
     path("files/", include('file_upload_app.urls')),
+    path("report/", include('report_generator_app.urls')),
 ]

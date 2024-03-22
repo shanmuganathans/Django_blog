@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "blog",
     "file_upload_app",
+    "report_generator_app",
     "users.apps.UsersConfig",
     "classviews.apps.ClassviewsConfig",
     "django.contrib.admin",

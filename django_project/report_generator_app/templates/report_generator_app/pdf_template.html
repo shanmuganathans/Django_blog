@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title> Report </title>
+    </head>
+    <body>
+        <h2> Report </h2>
+        <table border="1">
+            <tr>
+                <th> Name </th>
+                <th> Age </th>
+                <th> Emai </th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.name }} </td>
+                <td> {{ item.age }} </td>
+                <td> {{ item.email }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+    </html>
