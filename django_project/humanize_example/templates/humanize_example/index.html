@@ -1,0 +1,35 @@
+
+{% load humanize %}
+<html>
+    <head>
+        <title>Humanize Example</title>
+    </head>
+    <body>
+        <h1> Humanize Example </h1>
+        
+        <h2>  Normal output </h2>
+        <p> Current date: {{ current_date }} </p>
+        <p> Large Number : {{ large_number }} </p>
+        <p> Date : {{ current_time }} </p>
+        <p> Current Time : {{ current_time }} </p>
+        <p> Day 1 : {{ day1 }} </p>
+
+
+        <h2> Humanize Output </h2>
+
+        <p> Large Number: {{ large_number }} </p>
+        <p> Humanize Large Number: {{ large_number | intcomma }} </p>
+        <p> Ordinal : {{ ordinal_number | ordinal }} </p>
+
+        <p>  Natural Day : {{ day1 | naturalday }}</p>
+        <p> Natural Time: {{ day1 | naturaltime }}</p>
+        <p> Natural Day : {{ day1 | naturalday:"F d D"}} </p>
+        <p> Natural day with format : {{ day1 | naturalday:"D d M Y"}} </p>
+        <p> Time since : {{ day1 | timesince }} </p>
+        <p> Time until : {{ day1 | timeuntil}} </p>
+        <p> int to word : {{ large_number |intword }} </p>
+
+        {% comment %} <p> Natural time : {{ date_example | naturaltime }} </p> {% endcomment %}
+
+    </body>
+    </html>
