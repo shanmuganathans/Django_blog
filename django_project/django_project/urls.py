@@ -24,4 +24,5 @@ urlpatterns = [
     path("files/", include('file_upload_app.urls')),
     path("report/", include('report_generator_app.urls')),
     path("humanize/", include('humanize_example.urls')),
+    path("custom/", include("custome_template_tags.urls")),
 ]

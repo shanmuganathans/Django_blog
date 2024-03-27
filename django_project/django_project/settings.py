@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "humanize_example",
     "users.apps.UsersConfig",
     "classviews.apps.ClassviewsConfig",
+    "custome_template_tags",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -167,9 +168,9 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587  # Port for SMTP server
-EMAIL_USE_TLS = True  # Enable TLS (Transport Layer Security)
-EMAIL_HOST_USER = 'shan.july.1994@gmail.com'
-EMAIL_HOST_PASSWORD = 'zkJcG02mTE1qt9LS'  # Your email password
-DEFAULT_FROM_EMAIL = 'shan.july.1994@gmail.com'  # Default sender email address
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'Testing@gmail.com'
+EMAIL_HOST_PASSWORD = 'Testing@123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

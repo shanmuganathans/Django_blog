@@ -6,9 +6,20 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
+from django.core.mail import send_mail
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
+
+
+# import the logging library
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 @login_required
 def home(request):
-    
+    logger.warning('Homepage was accessed')
     all_data = Post.objects.all()
     context = {
         'posts':all_data,
@@ -74,3 +85,39 @@ def delete_post(request, id):
         post.delete()
         messages.success(request,"The post is deleted successfully..!")
         return redirect("posts")
+    
+def send_email_view(request):
+    # Send email
+    send_mail(
+        'Subject',  # Subject of the email
+        'Message body',  # Body of the email
+        'Testing@gmail.com.com',  # Sender's email address
+        ['to_mail_id@example.com'],  # List of recipient email addresses
+        fail_silently=False,  # Set to True to suppress exceptions (optional)
+    )
+    return HttpResponse('Email sent successfully!')
+
+
+def test_pagination(request):
+    object_list = Contact.objects.all()
+    page_num = request.GET.get('page', 1)
+
+    paginator = Paginator(object_list, 2) # 6 employees per page
+
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is out of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/pagination.html', {'page_obj': page_obj})
+
+class PaginationTest(ListView):
+    model = Contact
+    context_object_name = 'contact'
+    paginate_by = 2
+    template_name = 'blog/pagination.html'

@@ -1,0 +1,11 @@
+{% load custom_tags  custom_filters %}
+<html>
+<head>
+    <title> Custome tags and Filters </title>
+</head>
+<body>
+    <h1> Random Number : {% random_number %} </h1>
+    <h2> Upper Case Text: {{ "sample"| to_upper }} </h2>
+    <h2> Add 100 with the given number : {{ 100 | add }} </h2>
+</body>
+</html>
