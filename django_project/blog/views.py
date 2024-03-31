@@ -11,6 +11,7 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 
+from .signals import custom_signal
 
 # import the logging library
 import logging
@@ -33,6 +34,7 @@ def about(request):
     context ={
         "contacts":all_data
     }
+    custom_signal.send(sender=None, instance = all_data)
     return render(request, "blog/about.html", context)
 
 @login_required
