@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from .feeds import ContactTutorialsFeeds
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include('blog.urls')),
@@ -25,4 +27,5 @@ urlpatterns = [
     path("report/", include('report_generator_app.urls')),
     path("humanize/", include('humanize_example.urls')),
     path("custom/", include("custome_template_tags.urls")),
+    path('feed/rss', ContactTutorialsFeeds(), name="post_feed"),
 ]
