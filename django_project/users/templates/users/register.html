@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<form method ="POST" novalidate>
- {% csrf_token %}
- <h2> Register Page </h2>
- {{ form.as_p }}
- <input type = "submit" value ="Register" />
-</form>
-{% endblock content %}
+<div class="container">
+    <form method="POST" novalidate class="mt-5">
+        {% csrf_token %}
+        <h2 class="mb-4">Register Page</h2>
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            <small class="text-danger">{{ form.username.errors }}</small>
+        </div>
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            <small class="text-danger">{{ form.email.errors }}</small>
+        </div>
+        <div class="mb-3">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            <small class="text-danger">{{ form.password1.errors }}</small>
+        </div>
+        <div class="mb-3">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            <small class="text-danger">{{ form.password2.errors }}</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+{% endblock %}
