@@ -26,13 +26,17 @@ def home(request):
         'posts':all_data,
         'title': 'Zen of Python'
     }
+    request.session['greeting'] = 'Hello, Django Sessions!'
+    request.session['username'] = 'JohnDoe'
     return render(request,"blog/home.html", context)
 
 @login_required
 def about(request):
     all_data = Contact.objects.all()
+    username = request.session.get('username', 'Guest')
     context ={
-        "contacts":all_data
+        "contacts":all_data,
+        "username": username,
     }
     custom_signal.send(sender=None, instance = all_data)
     return render(request, "blog/about.html", context)

@@ -3,5 +3,7 @@
 {% block content %}
 <h1>About</h1>
 {{ contacts }}
+<p>Session Value: {{ request.session.greeting }}</p>
+<p>Username Value: {{ request.session.username }}</p>
 
 {% endblock content %}
